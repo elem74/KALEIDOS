@@ -1,0 +1,83 @@
+---
+// Script section (empty for now)
+---
+
+<!-- Template section -->
+<div class="home-landing">
+    <div class="home-landing-background">
+
+      <video
+        autoplay
+        loop
+        muted
+        playsinline
+        poster="/images/home-landing-poster.jpg"
+        class="home-landing-background-video"
+      >
+        <source src="/videos/home-landing-background.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="home-landing-content">
+      <h1 class="home-landing-title">Discover Emerging Artists</h1>
+      <p class="home-landing-subtitle">Explore our curated selection of innovative art</p>
+      <a href="#" class="home-landing-cta">Discover</a>
+    </div>
+  </div>
+  
+  <!-- Style section -->
+  <style>
+   .home-landing {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+   .home-landing-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+   .home-landing-background-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+   .home-landing-content {
+      text-align: center;
+      color: #fff;
+      z-index: 1;
+    }
+    
+   .home-landing-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    
+   .home-landing-subtitle {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    
+   .home-landing-cta {
+      background-color: #333;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.25rem;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+    
+   .home-landing-cta:hover {
+      background-color: #444;
+    }
+  </style>
