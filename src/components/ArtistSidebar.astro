@@ -1,0 +1,87 @@
+---
+import type { Artist } from '../types/Artist';
+import type { Gallery } from '../types/Gallery';
+
+interface Props {
+  artist: Artist;
+  galleries: Gallery[];
+}
+
+const { artist, galleries } = Astro.props as Props;
+---
+
+<div class="relative">
+  <!-- Mobile Header -->
+  <div class="fixed top-0 left-0 right-0 p-4 bg-white z-10 flex items-center justify-between md:hidden shadow-md">
+    <button id="hamburger-btn" class="text-gray-900 focus:outline-none">
+      <span class="block w-8 h-1 bg-black mb-1"></span>
+      <span class="block w-8 h-1 bg-black mb-1"></span>
+      <span class="block w-8 h-1 bg-black"></span>
+    </button>
+    <h1 class="text-lg font-bold text-black">{artist.name}</h1>
+    <img src="/logos/KALEIDOS_750x1000.png" alt="Logo" class="w-8 h-8" />
+  </div>
+
+  <!-- Mobile Menu Panel -->
+  <div id="mobile-menu" class="fixed inset-0 bg-white z-20 transform -translate-x-full transition-transform">
+    <div class="flex justify-between p-6 items-center">
+      <h1 class="text-2xl font-bold">{artist.name}</h1>
+      <button id="close-btn" class="text-pink-500 text-2xl">X</button>
+    </div>
+    <nav class="flex flex-col items-center">
+      <ul class="space-y-6 text-center">
+        <li><a href="#" class="text-pink-500 text-xl">Overview</a></li>
+        <li><a href="#" class="text-black text-xl">About</a></li>
+        <li>
+          <a href="#" class="text-black text-xl flex items-center justify-center">
+            Gallery <span class="ml-2">&#9660;</span>
+          </a>
+        </li>
+      </ul>
+      <img src="/logos/Flavikon_Kaleidos_K.png" alt="Logo" class="w-16 h-16 my-8" />
+      <a href="/" class="text-pink-500 text-lg">Back to KALEIDOS</a>
+    </nav>
+  </div>
+
+  <!-- Desktop Sidebar -->
+  <div class="hidden md:block fixed top-0 left-0 h-full bg-transparent pl-6 pt-8">
+    <div class="flex flex-col items-start">
+      <img src="/logos/KALEIDOS_750x1000.png" alt="KALEIDOS logo" class="w-36 h-36 mb-6" />
+      <h2 class="text-lg font-bold mb-4">{artist.name}</h2>
+      <nav>
+        <ul class="space-y-3">
+          {galleries.map((gallery) => (
+            <li key={gallery.id}>
+              <a href={`/artists/${artist.slug}/${gallery.slug}`} class="block text-gray-600 hover:text-black">
+                {gallery.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div class="mt-6">
+        <a href="/" class="text-pink-500 text-sm hover:underline">Back to KALEIDOS</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const closeBtn = document.getElementById('close-btn');
+
+  hamburgerBtn.addEventListener('click', () => {
+    mobileMenu.classList.remove('-translate-x-full');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    mobileMenu.classList.add('-translate-x-full');
+  });
+</script>
+
+<style>
+  #mobile-menu {
+    transition: transform 0.3s ease-in-out;
+  }
+</style>

@@ -1,0 +1,39 @@
+---
+import ArtistPage from '../components/ArtistPage.astro';
+
+const artist = {
+  id: 1,
+  name: 'Thomas Degen',
+  slug: 'thomas-degen',
+  bio: 'Thomas Degen is a German artist known for his vibrant and eclectic works. His artistic style blends elements of pop art, surrealism, and abstract expressionism, creating a unique visual language.',
+  bioImage: '/images/thomas-degen/THD_profile.jpg', // optional bio image
+};
+
+
+
+const galleries = [
+  {
+    id: 1,
+    title: 'USA TV 1996',
+    slug: 'usa-tv-1996',
+    thumbnail: '/images/thomas-degen/usa-tv-1996-thumbnail.jpg',
+    artistId: 1,
+  },
+  {
+    id: 2,
+    title: 'USA TV Football 1992',
+    slug: 'USA-football-1992',
+    thumbnail: '/images/thomas-degen/european-football-1992-thumbnail.jpg',
+    artistId: 1,
+  },
+  {
+    id: 3,
+    title: 'MTV Europe 1995',
+    slug: 'tv-europe-1995',
+    thumbnail: '/images/thomas-degen/mtv-europe-1995-thumbnail.jpg',
+    artistId: 1,
+  },
+];
+
+---
+<ArtistPage artist={artist} galleries={galleries} />
