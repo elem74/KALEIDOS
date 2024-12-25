@@ -1,22 +1,67 @@
 :root {
-    --font-family: 'Inter', sans-serif;
-    --font-size: 16px;
-    --line-height: 1.5;
-    --color-primary: #333;
-    --color-secondary: #666;
-    --color-background: #f9f9f9;
-  }
+  --font-primary: 'Inter', sans-serif;
+  --font-secondary: 'Space Grotesk', sans-serif;
+  --font-size: 16px;
+  --line-height: 1.6;
+  --color-primary: #212121; /* Dark gray */
+  --color-secondary: #ef699e; /* Pink */
+  --color-background: #f9f9f9;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  color: var(--color-primary);
+  background-color: var(--color-background);
+  margin: 0;
+  padding-top: 80px; /* Adjust for header height */
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-secondary);
+  margin: 0 0 0.5em;
+  color: var(--color-primary);
   
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: var(--font-family);
-    font-size: var(--font-size);
-    line-height: var(--line-height);
-    color: var(--color-primary);
-    background-color: var(--color-background);
-  }
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: red;
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 1.4;
+}
+
+h4, h5, h6 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Links */
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Utility */
+.container {
+  max-width: 1200px; /* Adjust as per your design */
+  margin: 0 auto;
+  padding: 16px; /* Space around the content */
+}
