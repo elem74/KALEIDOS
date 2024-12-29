@@ -18,8 +18,8 @@ const { artist, galleries } = Astro.props as Props;
       <span class="block w-8 h-1 bg-black mb-1"></span>
       <span class="block w-8 h-1 bg-black"></span>
     </button>
-    <h1 class="text-lg font-bold text-black">{artist.name}</h1>
-    <img src="/logos/KALEIDOS_750x1000.png" alt="Logo" class="w-8 h-8" />
+    <h1 class="text-xl align-middle pt-2 text-black">Vita of {artist.name}</h1>
+    <img src="/logos/Flavikon_Kaleidos_K.png" alt="Logo" class="w-12" />
   </div>
 
   <!-- Mobile Menu Panel -->
@@ -44,24 +44,26 @@ const { artist, galleries } = Astro.props as Props;
   </div>
 
   <!-- Desktop Sidebar -->
-  <div class="hidden md:block fixed top-0 left-0 h-full bg-transparent pl-6 pt-8">
+  <div class="hidden md:block fixed top-0 left-0 h-full bg-transparent pt-8 ps-5">
     <div class="flex flex-col items-start">
-      <img src="/logos/KALEIDOS_750x1000.png" alt="KALEIDOS logo" class="w-36 py-8 mb-6" />
-      <h2 class="text-lg font-bold mb-4">{artist.name}</h2>
-      <nav>
-        <ul class="space-y-3">
-          {galleries.map((gallery) => (
-            <li key={gallery.id}>
-              <a href={`/artists/${artist.slug}/${gallery.slug}`} class="block text-gray-600 hover:text-black">
-                {gallery.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <div class="mt-6">
-        <a href="/" class="text-pink-500 text-sm hover:underline">Back to KALEIDOS</a>
-      </div>
+      <img src="/logos/KALEIDOS_750x1000_BW.png" alt="KALEIDOS logo" class="w-36 py-8 mb-6" />
+      <span class="ps-5">
+        <h2 class="text-xl font-semibold mb-4">{artist.name}</h2>
+        <nav>
+          <ul class="space-y-3">
+            {galleries.map((gallery) => (
+              <li key={gallery.id}>
+                <a href={`/artists/${artist.slug}/${gallery.slug}`} class="block text-gray-600 hover:text-black">
+                  {gallery.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div class="mt-6">
+          <a href="/" class="text-pink-500 text-sm hover:underline">Back to KALEIDOS</a>
+       </div>
+      </span>
     </div>
   </div>
 </div>

@@ -1,28 +1,70 @@
+
+
+/* CSS RESET */
+*,
+*::after,
+*::before {
+
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+nav :where(ol, ul) {
+  list-style: none;
+}
+
+img,
+picture {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  border: none;
+  box-shadow: none;
+  border-style: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+
+
 :root {
   --font-primary: 'Inter', sans-serif;
   --font-secondary: 'Space Grotesk', sans-serif;
   --font-size: 16px;
   --line-height: 1.6;
-  --color-primary: #212121; /* Dark gray */
-  --color-secondary: #ef699e; /* Pink */
+  --text-normal: #000;
+  --color-primary: #000; 
+  --color-secondary: #ef699e; 
   --color-background: #f9f9f9;
+  --kaleidos: #ef699e;
+
 }
 
 body {
-  font-family: var(--font-primary);
+  font-family: var(--text-normal);
   font-size: var(--font-size);
   line-height: var(--line-height);
   color: var(--color-primary);
   background-color: var(--color-background);
   margin: 0;
   padding-top: 80px; /* Adjust for header height */
+
 }
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-secondary);
   margin: 0 0 0.5em;
-  color: var(--color-primary);
+
   
 }
 
@@ -30,7 +72,7 @@ h1 {
   font-size: 36px;
   line-height: 1.2;
   font-weight: 700;
-  color: red;
+  color: var(--color-secondary);
 }
 
 h2 {

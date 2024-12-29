@@ -1,6 +1,7 @@
 ---
 import type { Artist } from '../types/Artist';
 import type { Gallery } from '../types/Gallery'; 
+import '../styles/global.css';
 import ArtistSidebar from './ArtistSidebar.astro';
 import GalleryPreviews from './GalleryPreviews.astro';
 
@@ -12,7 +13,7 @@ interface Props {
 const { artist, galleries } = Astro.props as Props;
 ---
 
-<div class="artist-page container mx-auto p-6 lg:p-12 xl:p-16 bg-white">
+<div class="artist-page container mx-auto p-6 lg:p-12 xl:p-16 bg-transparent">
   <div class="flex flex-wrap">
     <!-- Sidebar Section -->
     <div class="w-full md:w-1/4 xl:w-1/5 px-4 mb-8 md:mb-0">
