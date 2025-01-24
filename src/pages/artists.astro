@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArtistPreview from '../components/ArtistPreview.astro'
+
+const allArtists = Object.values(import.meta.glob('./artists/*.md', { eager: true }));
+
+---
+
+<BaseLayout pageTitle="Artists">
+
+      {allArtists.map((artist: any) => <ArtistPreview name={artist.frontmatter.name} slug={artist.frontmatter.slug} bio={artist.frontmatter.bio} />)}
+
+</BaseLayout>
+

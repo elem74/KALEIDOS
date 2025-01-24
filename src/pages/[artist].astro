@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Picture, Image } from 'astro:assets';
+
+
+import { getImagesPaths } from '../utils/generatePaths';
+
+export async function getStaticPaths() {
+  const basePath = 'src/images';
+  const paths = getImagesPaths(basePath);
+  return paths;
+}
+
+const { artist, album } = Astro.params;
+
+
+
+
+
+import { onMount } from 'solid-js';
+
+const allImages = import.meta.glob('/src/images/*/*/*.jpg');
+
+const getFoldersAndImages = (artist) => {
+    const artistPath = `/src/images/${artist}/`;
+    const folders = {};
+
+    for (const path in allImages) {
+        if (path.startsWith(artistPath)) {
+            const parts = path.split('/');
+            const folderName = parts[4]; // Extract folder name
+            const fileName = parts[5]; // Extract file name
+
+            if (!folders[folderName]) {
+                folders[folderName] = fileName; // Store the first image file name
+            }
+        }
+    }
+
+    return folders;
+};
+
+const foldersAndImages = getFoldersAndImages(artist)
+
+
+// Get Artist Name
+
+const allArtists = Object.values(import.meta.glob('./artists/*.md', { eager: true }));
+
+const matchingArtist = allArtists.filter(el => el.frontmatter.slug === artist);
+const artistName = matchingArtist ? matchingArtist[0].frontmatter.name : 'Artist not found';
+const artistBio = matchingArtist ? matchingArtist[0].frontmatter.bio : 'Artist not found';
+
+console.log('All Artists:', allArtists[0].frontmatter.name);
+---
+
+<style>
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+
+    .artist {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .album {
+        flex-basis: 48%;
+    }
+</style>
+
+
+
+<BaseLayout pageTitle={`Artist: ${artistName}`}>
+
+    <p>
+        {artistBio}
+    </p>
+
+    <h2>Alben von {artistName}</h2>
+
+    <div class="artist">
+
+        {Object.entries(foldersAndImages).map(([folder, file]) => (
+
+            <div class="album">
+                <a href={`${artist}/${folder}`}>
+
+                    <img src={`/src/images/${artist}/${folder}/${file}`} width="200">
+                    <h3>{folder}</h3>
+                </a>
+
+            </div>
+
+        ))}
+
+    </div>
+
+</BaseLayout>
+

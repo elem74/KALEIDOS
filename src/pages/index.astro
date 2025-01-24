@@ -1,16 +1,13 @@
 ---
-import Header from '../components/Header.astro';
-import HomeLanding from '../components/HomeLanding.astro';
-import "../styles/global.css";
-
+import Welcome from '../components/Welcome.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<Header />
+<BaseLayout pageTitle="Home">
+  <h2>Welcome</h2>
 
+  <p>
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+  </p>
 
-
-  <HomeLanding /> 
-
-
-
-
+</BaseLayout>

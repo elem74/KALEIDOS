@@ -1,59 +1,33 @@
-<!-- src/components/Header.astro -->
-<header class="header">
-    <nav class="header-nav">
-      <div class="header-logo-container">
-        <img src="/logos/Flavikon_Kaleidos_K.png" alt="Website Logo" class="header-logo-image" />
-      </div>
-      <ul class="header-menu">
-        <li><a href="/" class="header-menu-item">Home</a></li>
-        <li><a href="/gallery" class="header-menu-item">Gallery</a></li>
-        <li><a href="/artists" class="header-menu-item">Artists</a></li>
-        <li><a href="/contact" class="header-menu-item">Contact</a></li>
-      </ul>
-    </nav>
-</header>
-  
+---
+import { Image } from 'astro:assets';
+import Navigation from './Navigation.astro';
+import Hamburger from './Hamburger.astro';
+---
+
 <style>
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 1rem;
-    background-color: ;
-  }
-
-  .header-nav {
+  header {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
   }
 
-  .header-logo-container {
-    display: flex;
-    align-items: center;
-  }
+</style>
 
-  .header-logo-image {
-    width: 50px; /* Adjust the logo size to your liking */
-    height: auto;
-  }
+<header>
+  <Image src="/logos/Flavikon_Kaleidos_K.png" alt="Kaleidos Logo"  width="50" height="50" />
+  <nav>
+    <Hamburger />
+    <Navigation />
+  </nav>
+</header>
 
-  .header-menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
+<script>
 
-  .header-menu-item {
-    color: var(--color-primary);
-    text-decoration: none;
-    margin-left: 20px;
-  }
-
-  .header-menu-item:hover {
-    color: #666; /* Optional: Change the hover color to your liking */
-  }
-
-  </style>
+    document.querySelector(".hamburger")
+        ?.addEventListener("click", () => {
+            document
+                .querySelector(".nav-links")
+                ?.classList.toggle("expanded");
+        });
+</script>

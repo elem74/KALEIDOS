@@ -1,0 +1,29 @@
+---
+import { getImagesPaths } from '../utils/generatePaths';
+import imagesData from '../utils/generateRoutes';
+
+// export async function getStaticPaths() {
+//   const basePath = 'src/images';
+//   const paths = getImagesPaths(basePath);
+//   return { paths };
+// }
+
+// const { artist, album } = Astro.params;
+// const albumData = imagesData.find(
+//   (data) => data.artist === artist && data.album === album
+// );
+
+// if (!albumData) {
+//   throw new Error(`Album not found: ${artist} - ${album}`);
+// }
+
+const basePath = 'src/images';
+const paths = getImagesPaths(basePath);
+
+---
+
+{Object.entries(paths).map(([key, value]) => (
+
+      <li><strong>{key}:</strong> <pre>{JSON.stringify(value, null, 2)}</pre></li>
+
+    ))}

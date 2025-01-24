@@ -1,0 +1,14 @@
+---
+import { readFileSync } from 'fs';
+import { join } from 'path';
+
+// Define the correct path to the JSON file
+const dataPath = join(import.meta.env.SITE, 'src', 'data', 'folderList.json');
+const folderList = JSON.parse(readFileSync(dataPath, 'utf8'));
+---
+
+<ul>
+  {folderList.map((entry, index) => (
+    <li key={index}>{entry}</li>
+  ))}
+</ul>

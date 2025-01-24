@@ -1,0 +1,60 @@
+---
+import { getImagesPaths } from '../../utils/generatePaths';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const basePath = 'src/images';
+  const paths = getImagesPaths(basePath);
+  return paths;
+}
+
+const { artist, album } = Astro.params;
+
+`/src/images/${artist}/${album}/*.{jpeg,jpg,png,gif}`
+
+const allImages = import.meta.glob<{ default: ImageMetadata }>('/src/images/*/*/*.{jpeg,jpg,png,gif}')
+
+// Filter paths based on parameters
+const resolvedImages = Object.fromEntries(
+  Object.entries(allImages).filter(([path, _]) =>
+    path.includes(`/${artist}/${album}/`)
+  )
+);
+
+const albumPath = `/src/images/${artist}/`;
+
+const Images = import.meta.glob<{ default: ImageMetadata }>('/src/images/*/*/*.{jpeg,jpg,png,gif}')
+
+---
+<style>
+
+    .album {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .pic {
+        flex-basis: 30%;
+    }
+</style>
+
+<BaseLayout pageTitle={`Artist: ${artist}`}>
+
+    <h2>Album: {album}</h2>
+
+    <div class="album">
+
+        {Object.entries(resolvedImages).map(([entry]) => (
+
+            // <li><pre>{JSON.stringify(entry, null, 2)}</pre></li>
+            <div class="pic">
+                <img src={entry} width="200">
+            </div>
+
+        ))}
+
+    </div>
+
+</BaseLayout>

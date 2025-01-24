@@ -1,0 +1,84 @@
+---
+
+import { Picture } from 'astro:assets';
+
+
+const { name, slug, bio } = Astro.props;
+const image_alt = 'Profilbild ' + Astro.props.name
+
+// // Use dynamic import to load a module or component based on the slug prop
+// async function loadComponent() {
+//   try {
+//     const component = await import('/src/images/' + Astro.props.slug + '/profile.jpg'  /* @vite-ignore */);
+//     return component.default;
+//   } catch (err) {
+//     console.error(`Failed to load component for slug: ${slug}`, err);
+//     return null;
+//   }
+// }
+
+// const image = await loadComponent();
+
+const empty = ''
+
+---
+
+<style>
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .artistwrap {
+        margin-top: 10px;
+    }
+
+    .artist {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .item {
+        border: 1px solid grey;
+    }
+
+    .profilepic {
+        flex-basis: 40%;
+    }
+
+    .profilepic img {
+        max-width: 100%;
+        height: auto;
+        flex: 1 1 auto;
+        object-fit: cover;
+    }
+
+    .infobox {
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-basis: 60%;
+    }
+
+</style>
+
+
+<div class="artistwrap">
+    <a href={`/${slug}`}>
+        <div style="border: 1px dotted grey;" class="artist">
+            <div class="item profilepic">
+                <!-- <Picture src={image} formats={['avif', 'webp']} layout='full-width' alt={image_alt}/> -->
+
+                <img src={`/src/images/${slug}/profile.jpg`}>
+
+            </div>
+
+            <div class="item infobox">
+                <h2>{name}</h2>
+                <p>{bio}</p>
+                <p>&nbsp;</p>
+            </div>
+        </div>
+    </a>
+</div>
